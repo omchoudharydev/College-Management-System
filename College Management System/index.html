@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegePro - College Management System</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Ambient Glow Orbs for Glassmorphism -->
+    <div class="bg-ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="brand-title">College<span>Pro</span></span>
+                </div>
+                <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-target="dashboard">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#students" class="nav-link" data-target="students">
+                        <i class="fa-solid fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#faculty" class="nav-link" data-target="faculty">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span>Faculty</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#courses" class="nav-link" data-target="courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#departments" class="nav-link" data-target="departments">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span>Departments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#attendance" class="nav-link" data-target="attendance">
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#timetable" class="nav-link" data-target="timetable">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Timetable</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#notices" class="nav-link" data-target="notices">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <span>Notice & Events</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#reports" class="nav-link" data-target="reports">
+                        <i class="fa-solid fa-file-waveform"></i>
+                        <span>Reports & Export</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="internship-badge">
+                    <small>Task ID: WD-COL-001</small>
+                    <span>Data Alcott Systems</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="page-title-wrap">
+                        <h1 id="pageTitle">Dashboard</h1>
+                        <span class="academic-year-badge">Academic Session 2026-27</span>
+                    </div>
+                </div>
+
+                <div class="top-bar-right">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <div class="user-profile-badge" id="userProfileBtn">
+                        <div class="user-avatar">AD</div>
+                        <div class="user-meta">
+                            <span class="user-name" id="currentUserName">Admin User</span>
+                            <span class="user-role" id="currentUserRole">Administrator</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down role-caret"></i>
+                    </div>
+
+                    <!-- Role Switching Menu -->
+                    <div class="role-menu" id="roleMenu">
+                        <div class="role-menu-header">Switch Simulated Account</div>
+                        <button class="role-item" data-role="Admin" data-name="Admin User"><i class="fa-solid fa-shield-halved"></i> Administrator</button>
+                        <button class="role-item" data-role="Faculty" data-name="Prof. Sarah Jenkins"><i class="fa-solid fa-chalkboard-user"></i> Faculty Member</button>
+                        <button class="role-item" data-role="Student" data-name="John Smith"><i class="fa-solid fa-user-graduate"></i> Enrolled Student</button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- SECTION: DASHBOARD -->
+                <section id="dashboard" class="content-section active">
+                    <!-- HERO BANNER -->
+                    <div class="hero-banner">
+                        <div class="hero-content">
+                            <div class="hero-tag"><i class="fa-solid fa-sparkles"></i> Institution Portal</div>
+                            <h2 class="hero-title">Empowering Higher Education With Smart Administration</h2>
+                            <p class="hero-desc">Manage your campus academic operations, enrollments, real-time attendance rosters, and departmental analytics smoothly in one place.</p>
+                            <div class="hero-actions">
+                                <button class="btn-hero-primary" onclick="openStudentModal()"><i class="fa-solid fa-user-plus"></i> Enroll Student</button>
+                                <button class="btn-hero-secondary" onclick="exportStudentsCSV()"><i class="fa-solid fa-file-csv"></i> Download Roster</button>
+                            </div>
+                        </div>
+                        <div class="hero-illustration">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-blue-light"><i class="fa-solid fa-user-graduate"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Total Students</span>
+                                <h3 id="statTotalStudents">0</h3>
+                                <span class="stat-subtext text-success"><i class="fa-solid fa-arrow-trend-up"></i> Active: <span id="statActiveStudents">0</span></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-green-light"><i class="fa-solid fa-chalkboard-user"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Faculty Members</span>
+                                <h3 id="statTotalFaculty">0</h3>
+                                <span class="stat-subtext">Across 6 Departments</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-purple-light"><i class="fa-solid fa-book-open"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Offered Courses</span>
+                                <h3 id="statTotalCourses">0</h3>
+                                <span class="stat-subtext">Undergraduate & Grad</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-orange-light"><i class="fa-solid fa-building-columns"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Departments</span>
+                                <h3 id="statTotalDepartments">6</h3>
+                                <span class="stat-subtext">All Operational</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Grid: Analytics & Notices -->
+                    <div class="dashboard-grid">
+                        <div class="card department-distribution-card">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-chart-column"></i> Department Enrollment Breakdown</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="deptBarsContainer" class="dept-bars-container">
+                                    <!-- Dynamic Progress Bars -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card notice-summary-card">
+                            <div class="card-header flex-between">
+                                <h3><i class="fa-solid fa-bell"></i> Announcements & Events</h3>
+                                <a href="#notices" class="btn btn-outline btn-sm open-section-btn" data-target="notices">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div id="dashboardNotices" class="dashboard-notices-list">
+                                    <!-- Dynamic Notice preview -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-bolt"></i> Quick Administrative Operations</h3>
+                        </div>
+                        <div class="card-body quick-actions-row">
+                            <button class="btn btn-primary" onclick="openStudentModal()"><i class="fa-solid fa-plus"></i> New Student Enrollment</button>
+                            <button class="btn btn-outline" onclick="openFacultyModal()"><i class="fa-solid fa-plus"></i> Appoint Faculty</button>
+                            <button class="btn btn-outline" onclick="openCourseModal()"><i class="fa-solid fa-plus"></i> Introduce Course</button>
+                            <button class="btn btn-secondary" onclick="exportStudentsCSV()"><i class="fa-solid fa-file-arrow-down"></i> Export Student Roster</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: STUDENTS -->
+                <section id="students" class="content-section">
+                    <div class="section-toolbar">
+                        <div class="search-filter-wrap">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="studentSearchInput" placeholder="Search student by name, email, or ID...">
+                            </div>
+                            <select id="studentDeptFilter" class="form-select">
+                                <option value="">All Departments</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Arts & Humanities">Arts & Humanities</option>
+                            </select>
+                            <select id="studentStatusFilter" class="form-select">
+                                <option value="">All Statuses</option>
+                                <option value="Active">🟢 Active</option>
+                                <option value="Enrolled">🟡 Enrolled</option>
+                                <option value="Graduated">🔴 Graduated</option>
+                                <option value="On Leave">⚪ On Leave</option>
+                                <option value="Dropped">📝 Dropped</option>
+                            </select>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-outline" onclick="exportStudentsCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+                            <button class="btn btn-primary" onclick="openStudentModal()"><i class="fa-solid fa-user-plus"></i> Enroll Student</button>
+                        </div>
+                    </div>
+
+                    <div class="table-card">
+                        <div class="table-responsive">
+                            <table class="data-table" id="studentsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Student Name</th>
+                                        <th>Department</th>
+                                        <th>Year</th>
+                                        <th>Contact</th>
+                                        <th>Status</th>
+                                        <th>Enrollment Date</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsTableBody">
+                                    <!-- Dynamic content -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer flex-between">
+                            <span id="studentCountLabel">Showing 0 of 0 students</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: FACULTY -->
+                <section id="faculty" class="content-section">
+                    <div class="section-toolbar">
+                        <div class="search-filter-wrap">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="facultySearchInput" placeholder="Search faculty by name, qualification, or department...">
+                            </div>
+                            <select id="facultyDeptFilter" class="form-select">
+                                <option value="">All Departments</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Arts & Humanities">Arts & Humanities</option>
+                            </select>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-outline" onclick="exportFacultyCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+                            <button class="btn btn-primary" onclick="openFacultyModal()"><i class="fa-solid fa-plus"></i> Add Faculty Member</button>
+                        </div>
+                    </div>
+
+                    <div class="table-card">
+                        <div class="table-responsive">
+                            <table class="data-table" id="facultyTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Faculty Name</th>
+                                        <th>Email</th>
+                                        <th>Department</th>
+                                        <th>Qualification</th>
+                                        <th>Joining Date</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="facultyTableBody">
+                                    <!-- Dynamic content -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer flex-between">
+                            <span id="facultyCountLabel">Showing 0 faculty members</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: COURSES -->
+                <section id="courses" class="content-section">
+                    <div class="section-toolbar">
+                        <div class="search-filter-wrap">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="courseSearchInput" placeholder="Search course by code or title...">
+                            </div>
+                            <select id="courseDeptFilter" class="form-select">
+                                <option value="">All Departments</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Arts & Humanities">Arts & Humanities</option>
+                            </select>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="openCourseModal()"><i class="fa-solid fa-plus"></i> Create Course</button>
+                        </div>
+                    </div>
+
+                    <div class="courses-grid" id="coursesGrid">
+                        <!-- Dynamic Course Cards -->
+                    </div>
+                </section>
+
+                <!-- SECTION: DEPARTMENTS -->
+                <section id="departments" class="content-section">
+                    <div class="departments-grid" id="departmentsGrid">
+                        <!-- Dynamic Department Cards -->
+                    </div>
+                </section>
+
+                <!-- SECTION: ATTENDANCE -->
+                <section id="attendance" class="content-section">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-sliders"></i> Attendance Session Configuration</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="attendance-filter-bar">
+                                <div class="form-group">
+                                    <label for="attCourseSelect">Select Course</label>
+                                    <select id="attCourseSelect" class="form-select">
+                                        <!-- Populated via JS -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attDateInput">Session Date</label>
+                                    <input type="date" id="attDateInput" class="form-control">
+                                </div>
+                                <div class="form-group flex-end">
+                                    <button class="btn btn-secondary" id="markAllPresentBtn"><i class="fa-solid fa-check-double"></i> Mark All Present</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-card">
+                        <div class="table-header-strip flex-between" style="padding: 18px 22px; border-bottom: 1px solid var(--border-color);">
+                            <h4>Session Roster</h4>
+                            <span class="badge badge-info" id="attendanceSummaryBadge">Attendance: 0%</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table" id="attendanceTable">
+                                <thead>
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Student Name</th>
+                                        <th>Department</th>
+                                        <th>Year</th>
+                                        <th class="text-center">Attendance Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="attendanceTableBody">
+                                    <!-- Dynamic Attendance list -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: TIMETABLE -->
+                <section id="timetable" class="content-section">
+                    <div class="section-toolbar">
+                        <div class="search-filter-wrap">
+                            <select id="timetableDeptSelect" class="form-select">
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            </select>
+                            <select id="timetableYearSelect" class="form-select">
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year" selected>3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Schedule</button>
+                    </div>
+
+                    <div class="table-card">
+                        <div class="table-responsive">
+                            <table class="timetable-grid" id="timetableGrid">
+                                <thead>
+                                    <tr>
+                                        <th>Day / Period</th>
+                                        <th>09:00 - 10:30 AM</th>
+                                        <th>10:45 - 12:15 PM</th>
+                                        <th>01:15 - 02:45 PM</th>
+                                        <th>03:00 - 04:30 PM</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="timetableBody">
+                                    <!-- Populated via script -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: NOTICE & EVENTS -->
+                <section id="notices" class="content-section">
+                    <div class="section-toolbar">
+                        <h3>Campus Notices, Updates & Academic Events</h3>
+                        <button class="btn btn-primary" onclick="openNoticeModal()"><i class="fa-solid fa-plus"></i> Post Announcement</button>
+                    </div>
+                    <div class="notices-grid" id="noticesFullGrid">
+                        <!-- Dynamic notices -->
+                    </div>
+                </section>
+
+                <!-- SECTION: REPORTS -->
+                <section id="reports" class="content-section">
+                    <div class="reports-container">
+                        <div class="card mb-4">
+                            <div class="card-header flex-between">
+                                <h3><i class="fa-solid fa-file-invoice"></i> System Summary & Official Audit Reports</h3>
+                                <button class="btn btn-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Complete Audit</button>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted">Generate instant verified CSV spreadsheets and executive summaries for institutional administration.</p>
+                                <div class="reports-action-grid">
+                                    <div class="report-box">
+                                        <div class="report-box-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                                        <h4>Student Registry Report</h4>
+                                        <p>Comprehensive roster with department, contact details, year, and status.</p>
+                                        <button class="btn btn-primary btn-sm" onclick="exportStudentsCSV()"><i class="fa-solid fa-download"></i> Download CSV</button>
+                                    </div>
+
+                                    <div class="report-box">
+                                        <div class="report-box-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                                        <h4>Faculty Staff Report</h4>
+                                        <p>Full faculty directory with qualifications, departments, and joining history.</p>
+                                        <button class="btn btn-primary btn-sm" onclick="exportFacultyCSV()"><i class="fa-solid fa-download"></i> Download CSV</button>
+                                    </div>
+
+                                    <div class="report-box">
+                                        <div class="report-box-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                                        <h4>Attendance Log Report</h4>
+                                        <p>Recorded session records with date, course ID, and student attendance.</p>
+                                        <button class="btn btn-primary btn-sm" onclick="exportAttendanceCSV()"><i class="fa-solid fa-download"></i> Download CSV</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Institutional Performance Overview</h3>
+                            </div>
+                            <div class="card-body" id="auditSummaryContainer">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL: STUDENT ENROLL / EDIT -->
+    <div class="modal" id="studentModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="studentModalTitle">Enroll New Student</h3>
+                <button class="modal-close" onclick="closeModal('studentModal')">&times;</button>
+            </div>
+            <form id="studentForm" onsubmit="handleStudentFormSubmit(event)">
+                <div class="modal-body">
+                    <input type="hidden" id="studentId">
+                    <div class="form-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName" class="form-control" required placeholder="e.g. John Smith">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="studentEmail">College Email *</label>
+                            <input type="email" id="studentEmail" class="form-control" required placeholder="john@college.edu">
+                        </div>
+                        <div class="form-group col">
+                            <label for="studentPhone">Phone Number *</label>
+                            <input type="tel" id="studentPhone" class="form-control" required placeholder="+91 9876543210">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="studentDept">Department *</label>
+                            <select id="studentDept" class="form-select" required>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Arts & Humanities">Arts & Humanities</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="studentYear">Academic Year *</label>
+                            <select id="studentYear" class="form-select" required>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="studentStatus">Status *</label>
+                            <select id="studentStatus" class="form-select" required>
+                                <option value="Active">🟢 Active</option>
+                                <option value="Enrolled">🟡 Enrolled</option>
+                                <option value="Graduated">🔴 Graduated</option>
+                                <option value="On Leave">⚪ On Leave</option>
+                                <option value="Dropped">📝 Dropped</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="studentEnrollDate">Enrollment Date *</label>
+                            <input type="date" id="studentEnrollDate" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('studentModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="studentSubmitBtn">Save Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: FACULTY CREATE / EDIT -->
+    <div class="modal" id="facultyModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="facultyModalTitle">Add Faculty Member</h3>
+                <button class="modal-close" onclick="closeModal('facultyModal')">&times;</button>
+            </div>
+            <form id="facultyForm" onsubmit="handleFacultyFormSubmit(event)">
+                <div class="modal-body">
+                    <input type="hidden" id="facultyId">
+                    <div class="form-group">
+                        <label for="facultyName">Full Name & Title *</label>
+                        <input type="text" id="facultyName" class="form-control" required placeholder="e.g. Dr. Alan Turing">
+                    </div>
+                    <div class="form-group">
+                        <label for="facultyEmail">Institutional Email *</label>
+                        <input type="email" id="facultyEmail" class="form-control" required placeholder="alan@college.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="facultyDept">Department *</label>
+                        <select id="facultyDept" class="form-select" required>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Electronics & Communication">Electronics & Communication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Arts & Humanities">Arts & Humanities</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="facultyQual">Qualification *</label>
+                            <input type="text" id="facultyQual" class="form-control" required placeholder="e.g. Ph.D. in AI, M.Tech">
+                        </div>
+                        <div class="form-group col">
+                            <label for="facultyJoinDate">Joining Date *</label>
+                            <input type="date" id="facultyJoinDate" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('facultyModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="facultySubmitBtn">Save Faculty</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: COURSE CREATE / EDIT -->
+    <div class="modal" id="courseModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="courseModalTitle">Add New Course</h3>
+                <button class="modal-close" onclick="closeModal('courseModal')">&times;</button>
+            </div>
+            <form id="courseForm" onsubmit="handleCourseFormSubmit(event)">
+                <div class="modal-body">
+                    <input type="hidden" id="courseId">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="courseName">Course Title *</label>
+                            <input type="text" id="courseName" class="form-control" required placeholder="e.g. Web Development">
+                        </div>
+                        <div class="form-group col">
+                            <label for="courseCode">Course Code *</label>
+                            <input type="text" id="courseCode" class="form-control" required placeholder="e.g. CS301">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="courseDept">Department *</label>
+                            <select id="courseDept" class="form-select" required>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Arts & Humanities">Arts & Humanities</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="courseCredits">Credits *</label>
+                            <input type="number" id="courseCredits" class="form-control" min="1" max="6" value="4" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseFaculty">Assigned Instructor *</label>
+                        <select id="courseFaculty" class="form-select" required>
+                            <!-- Populated via script -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseSchedule">Class Schedule *</label>
+                        <input type="text" id="courseSchedule" class="form-control" required placeholder="e.g. Mon, Wed 10:00 - 11:30 AM">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('courseModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="courseSubmitBtn">Save Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: NOTICE POSTING -->
+    <div class="modal" id="noticeModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Publish Notice or Event</h3>
+                <button class="modal-close" onclick="closeModal('noticeModal')">&times;</button>
+            </div>
+            <form id="noticeForm" onsubmit="handleNoticeFormSubmit(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="noticeTitle">Title *</label>
+                        <input type="text" id="noticeTitle" class="form-control" required placeholder="Announcement title">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="noticeCategory">Category *</label>
+                            <select id="noticeCategory" class="form-select" required>
+                                <option value="Academic">Academic</option>
+                                <option value="Exam">Examinations</option>
+                                <option value="Event">Campus Event</option>
+                                <option value="Administrative">Administrative</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="noticeDate">Date *</label>
+                            <input type="date" id="noticeDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="noticeContent">Details *</label>
+                        <textarea id="noticeContent" class="form-control" rows="4" required placeholder="Detailed notice content..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('noticeModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Publish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
